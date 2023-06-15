@@ -20,7 +20,7 @@ variable "application_gateway_backend_address_pool_ids" {
 }
 
 variable "ingress_port" {
-  description = "The port that the collector will be bound to and expose over HTTP"
+  description = "The port that the Iglu Server will be bound to and expose over HTTP"
   type        = number
 }
 
@@ -31,7 +31,7 @@ variable "vm_sku" {
 }
 
 variable "vm_instance_count" {
-  description = "The instance type to use"
+  description = "The instance count to use"
   type        = number
   default     = 1
 }
