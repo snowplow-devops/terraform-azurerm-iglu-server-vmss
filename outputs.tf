@@ -5,5 +5,5 @@ output "vmss_id" {
 
 output "nsg_id" {
   value       = azurerm_network_security_group.nsg.id
-  description = "ID of the network security group attached to the Collector Server nodes"
+  description = "ID of the network security group attached to the Iglu Server nodes"
 }
