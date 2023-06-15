@@ -1,0 +1,34 @@
+readonly CONFIG_DIR=/opt/snowplow/config
+
+sudo mkdir -p $${CONFIG_DIR}
+sudo cat << EOF > $${CONFIG_DIR}/iglu-server.hocon
+${config}
+EOF
+
+# Run the server setup
+set +e
+sudo docker run \
+  --name iglu-server-setup \
+  --network host \
+  -v $${CONFIG_DIR}:/snowplow/config \
+  -e 'JAVA_OPTS=${java_opts}' \
+  snowplow/iglu-server:${version} \
+  setup --config /snowplow/config/iglu-server.hocon
+set -e
+
+# Launch the server
+sudo docker run \
+  -d \
+  --name iglu-server \
+  --restart always \
+  --network host \
+  --memory=$(get_application_memory_mb)m \
+  --log-opt max-size=10m \
+  --log-opt max-file=5 \
+  -v $${CONFIG_DIR}:/snowplow/config \
+  -p ${port}:${port} \
+  -e 'JAVA_OPTS=${java_opts}' \
+  snowplow/iglu-server:${version} \
+  --config /snowplow/config/iglu-server.hocon
+
+${telemetry_script}
