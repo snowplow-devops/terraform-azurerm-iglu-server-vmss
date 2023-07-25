@@ -1,0 +1,19 @@
+# Will be prefixed to all resource names
+# Use this to easily identify the resources created and provide entropy for subsequent environments
+name = "iglu-test"
+
+db_name = "iglu"
+
+db_username = "test"
+
+db_password = "password"
+
+# Used for API actions on the Iglu Server
+# Change this to a new UUID and keep it secret!
+iglu_super_api_key = "00000000-0000-0000-0000-000000000000"
+
+# Generate a new SSH key locally with `ssh-keygen`
+# ssh-keygen -t rsa -b 4096 
+ssh_public_key   = "PUBLIC_KEY"
+
+user_provided_id = "iglu-module-example@snowplow.io"
