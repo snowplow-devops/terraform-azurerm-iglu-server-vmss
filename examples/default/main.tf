@@ -14,7 +14,8 @@ module "vnet" {
 }
 
 module "snowplow_db" {
-  source = "snowplow-devops/postgresql-server/azurerm"
+  source  = "snowplow-devops/postgresql-server/azurerm"
+  version = "0.1.1"
 
   name                = "${var.name}-iglu-db"
   resource_group_name = azurerm_resource_group.rg.name
