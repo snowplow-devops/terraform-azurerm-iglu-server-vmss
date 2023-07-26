@@ -1,6 +1,6 @@
 locals {
   module_name    = "iglu-server-vmss"
-  module_version = "0.1.0"
+  module_version = "0.1.1"
 
   app_name    = "iglu-server"
   app_version = var.app_version

@@ -1,3 +1,9 @@
+Version 0.1.1 (2023-07-26)
+--------------------------
+Update to Snowplow Community Licence (#4)
+Standardise modules (#5)
+Add example module (#6)
+
 Version 0.1.0 (2023-06-15)
 --------------------------
 Add Iglu Server module (#1) 
