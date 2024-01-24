@@ -30,7 +30,7 @@ module "snowplow_db" {
 
 module "iglu_server_lb" {
   source  = "snowplow-devops/lb/azurerm"
-  version = "0.1.1"
+  version = "0.2.0"
 
   name                = "${var.name}-clb"
   resource_group_name = azurerm_resource_group.rg.name
@@ -43,6 +43,8 @@ module "iglu_server_lb" {
 
 module "iglu_server" {
   source = "../.."
+
+  accept_limited_use_license = true
 
   name                = "${var.name}-iglu-server"
   resource_group_name = azurerm_resource_group.rg.name

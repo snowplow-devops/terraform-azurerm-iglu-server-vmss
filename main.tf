@@ -134,6 +134,8 @@ locals {
   })
 
   user_data = templatefile("${path.module}/templates/user-data.sh.tmpl", {
+    accept_limited_use_license = var.accept_limited_use_license
+
     port       = var.ingress_port
     config_b64 = base64encode(local.iglu_server_hocon)
     version    = local.app_version
