@@ -5,7 +5,7 @@ resource "azurerm_resource_group" "rg" {
 
 module "vnet" {
   source  = "snowplow-devops/vnet/azurerm"
-  version = "0.1.2"
+  version = "0.2.1"
 
   name                = "${var.name}-vnet"
   resource_group_name = azurerm_resource_group.rg.name
@@ -15,11 +15,12 @@ module "vnet" {
 
 module "snowplow_db" {
   source  = "snowplow-devops/postgresql-server/azurerm"
-  version = "0.1.1"
+  version = "0.2.1"
 
   name                = "${var.name}-iglu-db"
   resource_group_name = azurerm_resource_group.rg.name
 
+  vnet_id   = module.vnet.vnet_id
   subnet_id = lookup(module.vnet.vnet_subnets_name_id, "iglu1")
 
   db_name     = var.db_name
@@ -30,7 +31,7 @@ module "snowplow_db" {
 
 module "iglu_server_lb" {
   source  = "snowplow-devops/lb/azurerm"
-  version = "0.2.0"
+  version = "0.2.1"
 
   name                = "${var.name}-clb"
   resource_group_name = azurerm_resource_group.rg.name
