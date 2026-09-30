@@ -36,11 +36,12 @@ locals {
 
 module "iglu_db" {
   source  = "snowplow-devops/postgresql-server/azurerm"
-  version = "0.1.1"
+  version = "0.2.1"
 
   name                = "iglu-db"
   resource_group_name = var.resource_group_name
 
+  vnet_id   = var.vnet_id
   subnet_id = var.subnet_id
 
   db_name     = local.iglu_db_name
@@ -50,7 +51,7 @@ module "iglu_db" {
 
 module "iglu_lb" {
   source  = "snowplow-devops/lb/azurerm"
-  version = "0.2.0"
+  version = "0.2.1"
 
   name                = "iglu-lb"
   resource_group_name = var.resource_group_name
